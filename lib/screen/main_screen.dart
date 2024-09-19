@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/model/tourism_place.dart';
 import 'package:travel_app/screen/detail_screen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -10,46 +11,53 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Wisata Bandung'),
       ),
-      body: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const DetailScreen(),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          final TourismPlace place = tourismPlaceList[index];
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const DetailScreen();
+                  },
+                ),
+              );
+            },
+            child: Card(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Image.asset(place.imageAsset),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            place.name,
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(place.location),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },
-        child: Card(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Image.asset('assets/images/farm-house.jpg'),
-              ),
-              const Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Farm House Lembang',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text('Lembang'),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
+        itemCount: tourismPlaceList.length,
       ),
     );
   }
