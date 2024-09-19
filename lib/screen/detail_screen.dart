@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/model/tourism_place.dart';
+import 'package:travel_app/screen/component/favorite_button.dart';
 
 class DetailScreen extends StatelessWidget {
   final TourismPlace place;
@@ -17,7 +18,34 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset('assets/images/farm-house.jpg'),
+            Stack(
+              children: [
+                Image.asset(place.imageAsset),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                        const FavoriteButton(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Container(
               margin: const EdgeInsets.only(top: 16),
               child: Text(
