@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/screen/components/tourism_place_grid.dart';
-import 'package:travel_app/screen/components/tourism_place_list.dart';
+import 'package:travel_app/screen/layout/main_screen/tourism_place_grid.dart';
+import 'package:travel_app/screen/layout/main_screen/tourism_place_list.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -9,8 +9,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('Wisata Bandung. Size: ${MediaQuery.of(context).size.width}'),
+        title: const Text('Wisata Bandung'),
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
