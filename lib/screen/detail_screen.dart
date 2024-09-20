@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/model/tourism_place.dart';
-import 'package:travel_app/screen/component/favorite_button.dart';
+import 'package:travel_app/screen/components/favorite_button.dart';
 
 class DetailScreen extends StatelessWidget {
   final TourismPlace place;
