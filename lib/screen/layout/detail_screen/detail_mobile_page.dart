@@ -9,7 +9,7 @@ class DetailMobilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var informationTextStyle = const TextStyle(
-      fontSize: 16,
+      fontSize: 12,
       fontFamily: 'Oxygen',
     );
     return Scaffold(
@@ -100,7 +100,10 @@ class DetailMobilePage extends StatelessWidget {
               child: Text(
                 place.description,
                 textAlign: TextAlign.justify,
-                style: informationTextStyle,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Oxygen',
+                ),
               ),
             ),
             SizedBox(
